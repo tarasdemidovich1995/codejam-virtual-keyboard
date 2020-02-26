@@ -237,7 +237,7 @@ body {
   width: 330px;
 }
 
-.button_special_arrow-right, .button_special_arrow-left, .button_special_arrow-top, .button_special_arrow-bottom {
+.button_special_arrow {
   font-size: 1rem;
 }
 

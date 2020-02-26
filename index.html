@@ -6,112 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keyboard</title>
     <link rel="stylesheet" href="./main.css">
-    <script src="./index.js" defer></script>
+    <script src="./scripts/constructor.js" defer></script>
 </head>
 
-<body>
-    <div class="container">
-        <section id="keyboard" class="keyboard">
-            <div class="keyboard__field" action="">
-                <textarea class="keyboard__textarea" name="" id="textarea" cols="30" rows="10"></textarea>
-            </div>
-            <div class="keyboard__buttons">
-                <div class="keyboard__buttons-left">
-                    <div class="keyboard__buttons-row">
-                        <button class="button button_default" data-value="`">`</button>
-                        <button class="button button_default button_green" data-value="1">1</button>
-                        <button class="button button_default button_green" data-value="2">2</button>
-                        <button class="button button_default button_blue" data-value="3">3</button>
-                        <button class="button button_default button_purple" data-value="4">4</button>
-                        <button class="button button_default button_orange" data-value="5">5</button>
-                        <button class="button button_default button_orange" data-value="6">6</button>
-                        <button class="button button_default button_yellow" data-value="7">7</button>
-                        <button class="button button_default button_purple" data-value="8">8</button>
-                        <button class="button button_default button_blue" data-value="9">9</button>
-                        <button class="button button_default button_green" data-value="0">0</button>
-                        <button class="button button_default button_green" data-value="-">-</button>
-                        <button class="button button_default button_green" data-value="=">=</button>
-                        <button class="button button_special button_special_backspace"
-                            data-value="Backspace">Backspace</button>
-                    </div>
-                    <div class="keyboard__buttons-row">
-                        <button class="button button_special button_special_tab" data-value="Tab">Tab</button>
-                        <button class="button button_default button_green" data-value="q">q</button>
-                        <button class="button button_default button_blue" data-value="w">w</button>
-                        <button class="button button_default button_purple" data-value="e">e</button>
-                        <button class="button button_default button_orange" data-value="r">r</button>
-                        <button class="button button_default button_orange" data-value="t">t</button>
-                        <button class="button button_default button_yellow" data-value="y">y</button>
-                        <button class="button button_default button_yellow" data-value="u">u</button>
-                        <button class="button button_default button_purple" data-value="i">i</button>
-                        <button class="button button_default button_blue" data-value="o">o</button>
-                        <button class="button button_default button_green" data-value="p">p</button>
-                        <button class="button button_default button_green" data-value="[">]</button>
-                        <button class="button button_default button_green" data-value="]">]</button>
-                        <button class="button button_default" data-value="\">\</button>
+<body id='body'>
 
-                    </div>
-                    <div class="keyboard__buttons-row">
-                        <button class="button button_special button_special_capslock" data-value="CapsLook">Caps
-                            Lock</button>
-                        <button class="button button_default button_green" data-value="a">a</button>
-                        <button class="button button_default button_blue" data-value="s">s</button>
-                        <button class="button button_default button_purple" data-value="d">d</button>
-                        <button class="button button_default button_orange" data-value="f">f</button>
-                        <button class="button button_default button_orange" data-value="g">g</button>
-                        <button class="button button_default button_yellow" data-value="h">h</button>
-                        <button class="button button_default button_yellow" data-value="j">j</button>
-                        <button class="button button_default button_purple" data-value="k">k</button>
-                        <button class="button button_default button_blue" data-value="l">l</button>
-                        <button class="button button_default button_green" data-value=";">;</button>
-                        <button class="button button_default button_green" data-value="'">'</button>
-                        <button class="button button_special button_special_enter" data-value="Enter">Enter</button>
-                    </div>
-                    <div class="keyboard__buttons-row">
-                        <button class="button button_special button_special_shift" data-value="Shift">Shift</button>
-                        <button class="button button_default button_green" data-value="z">z</button>
-                        <button class="button button_default button_blue" data-value="x">x</button>
-                        <button class="button button_default button_purple" data-value="c">c</button>
-                        <button class="button button_default button_orange" data-value="v">v</button>
-                        <button class="button button_default button_orange" data-value="b">b</button>
-                        <button class="button button_default button_yellow" data-value="n">n</button>
-                        <button class="button button_default button_yellow" data-value="m">m</button>
-                        <button class="button button_default button_purple" data-value=",">,</button>
-                        <button class="button button_default button_blue" data-value=".">.</button>
-                        <button class="button button_default button_green" data-value="/">/</button>
-                        <button class="button button_special button_special_shift" data-value="Shift">Shift</button>
-                    </div>
-                    <div class="keyboard__buttons-row">
-                        <button class="button button_special button_special_ctrl" data-value="Ctrl">Ctrl</button>
-                        <button class="button button_special button_special_win" data-value="Win">Win</button>
-                        <button class="button button_special button_special_alt" data-value="Alt">Alt</button>
-                        <button class="button button_special button_special_space button_light-orange"
-                            data-value="Space"></button>
-                        <button class="button button_special button_special_alt" data-value="Alt">Alt</button>
-                        <button class="button button_special button_special_win" data-value="Win">Win</button>
-                        <button class="button button_special button_special_ctrl" data-value="Ctrl">Ctrl</button>
-                    </div>
-                </div>
-                <div class="keyboard__buttons-right">
-                    <div class="keyboard__buttons-row">
-                        <button class="button button_special button_special_del" data-value="Del">Del</button>
-                    </div>
-                    <div class="keyboard__buttons-row">
-                        <button class="button button_special button_special_arrow-top"
-                            data-value="arrow-top">&uarr;</button>
-                    </div>
-                    <div class="keyboard__buttons-row">
-                        <button class="button button_special button_special_arrow-left"
-                            data-value="arrow-left">&larr;</button>
-                        <button class="button button_special button_special_arrow-bottom"
-                            data-value="arrow-bottom">&darr;</button>
-                        <button class="button button_special button_special_arrow-right"
-                            data-value="arrow-right">&rarr;</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
 </body>
 
 </html>
