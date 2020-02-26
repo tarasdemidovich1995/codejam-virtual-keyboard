@@ -133,7 +133,7 @@ class Constructor {
         for (let i = 0; i < classList.length; i++) {
             elem.classList.add(classList[i]);
         }
-        if (!attributes) {
+        if (attributes) {
             for (let key in attributes) {
                 elem.setAttribute(key, attributes[key]);
             }
