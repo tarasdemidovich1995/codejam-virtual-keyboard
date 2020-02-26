@@ -29,8 +29,9 @@
 
         font-family: 'Roboto-Bold', monospace;
         font-weight: 700;
-        font-size: 0.55rem;
+        font-size: 0.5rem;
         color: $textColor2;
+        text-transform: uppercase;
 
         &_backspace {
             width: 71px;
@@ -50,8 +51,8 @@
                 border-radius: 50%;
                 background-color: red;
                 position: absolute;
-                top: 7.5px;
-                right: 7.5px;
+                top: 5px;
+                right: 5px;
             }
         }
 
@@ -68,7 +69,11 @@
         }
 
         &_space {
-            width: 386px;
+            width: 330px;
+        }
+
+        &_arrow-right, &_arrow-left, &_arrow-top, &_arrow-bottom {
+            font-size: 1rem;
         }
     }
 

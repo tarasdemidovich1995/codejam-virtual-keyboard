@@ -191,8 +191,9 @@ body {
 .button_special {
   font-family: 'Roboto-Bold', monospace;
   font-weight: 700;
-  font-size: 0.55rem;
+  font-size: 0.5rem;
   color: #5B6497;
+  text-transform: uppercase;
 }
 
 .button_special_backspace {
@@ -216,8 +217,8 @@ body {
   border-radius: 50%;
   background-color: red;
   position: absolute;
-  top: 7.5px;
-  right: 7.5px;
+  top: 5px;
+  right: 5px;
 }
 
 .button_special_enter {
@@ -233,7 +234,11 @@ body {
 }
 
 .button_special_space {
-  width: 386px;
+  width: 330px;
+}
+
+.button_special_arrow-right, .button_special_arrow-left, .button_special_arrow-top, .button_special_arrow-bottom {
+  font-size: 1rem;
 }
 
 .button_green {
