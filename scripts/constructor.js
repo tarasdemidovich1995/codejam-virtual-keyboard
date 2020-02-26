@@ -59,6 +59,7 @@ class Constructor {
         'space',
         'backspace',
         'del',
+        'alt',
         'enter',
         '&uarr;',
         '&larr;',
