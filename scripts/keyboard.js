@@ -144,7 +144,7 @@ export default class Constructor {
         const container = this.createElement('div', ['container']);
         const keyboard = this.createElement('section', ['keyboard'], { id: 'keyboard' });
         const keyboardField = this.createElement('div', ['keyboard__field']);
-        const textarea = this.createElement('textarea', ['keyboard__textarea'], { id: 'textarea' });
+        const textarea = this.createElement('textarea', ['keyboard__textarea'], { id: 'textarea', tabindex: '-1' });
         const keyboardButtons = this.createElement('div', ['keyboard__buttons']);
         const keyboardButtonsLeft = this.createLayout('div', ['keyboard__buttons-left'], this.layout, this.layoutKeyCode);
         const keyboardButtonsRight = this.createLayout('div', ['keyboard__buttons-right'], this.deleteNArrowsLayout, this.deleteNArrowsLayoutKeyCode);
@@ -158,6 +158,9 @@ export default class Constructor {
         keyboard.appendChild(keyboardButtons);
 
         container.appendChild(keyboard);
+
+        this.textarea = textarea;
+        this.keyboardButtons = keyboardButtons;
 
         return container;
     }
@@ -182,5 +185,17 @@ export default class Constructor {
         const curLanguage = language === 'ru-RU' ? 'Ru' : 'Eng';
         const curCase = isLowerCase ? 'LowerCase' : 'UpperCase';
         return this[`layout${curLanguage}${curCase}`];
+    }
+
+    getTextarea() {
+        return this.textarea;
+    }
+
+    getKeyboardButtons() {
+        return this.keyboardButtons;
+    }
+
+    getButtons() {
+        return this.keyboardButtons.querySelectorAll('.button');
     }
 }

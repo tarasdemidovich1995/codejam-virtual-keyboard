@@ -175,10 +175,22 @@ body {
           box-shadow: -3px 3px #9AD3FA;
   border: 3px solid #9AD3FA;
   cursor: pointer;
+  -webkit-transition-duration: 0.2s, 0.2s;
+          transition-duration: 0.2s, 0.2s;
+  -webkit-transition-property: -webkit-transform, -webkit-box-shadow;
+  transition-property: -webkit-transform, -webkit-box-shadow;
+  transition-property: transform, box-shadow;
+  transition-property: transform, box-shadow, -webkit-transform, -webkit-box-shadow;
+  -webkit-transition-duration: linear, linear;
+          transition-duration: linear, linear;
 }
 
 .button:last-child {
   margin-right: 0;
+}
+
+.button:focus {
+  outline-width: 0;
 }
 
 .button_default {
@@ -275,5 +287,12 @@ body {
   -webkit-box-shadow: -3px 3px #FFD87E;
           box-shadow: -3px 3px #FFD87E;
   border: 3px solid #FFD87E;
+}
+
+.button_active {
+  -webkit-transform: translate(-3px, 3px);
+          transform: translate(-3px, 3px);
+  -webkit-box-shadow: 0 0 #9AD3FA;
+          box-shadow: 0 0 #9AD3FA;
 }
 /*# sourceMappingURL=main.css.map */

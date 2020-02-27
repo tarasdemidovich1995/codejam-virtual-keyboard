@@ -13,9 +13,17 @@
     border: 3px solid $thirdColor;
     cursor: pointer;
 
+    transition-duration: 0.2s, 0.2s;
+    transition-property: transform, box-shadow;
+    transition-duration: linear, linear;
+
     &:last-child {
         margin-right: 0;
     }
+
+    &:focus {
+        outline-width: 0;
+    }   
 
     &_default {
         font-family: 'Roboto-Regular' monospace;
@@ -99,5 +107,10 @@
     &_light-orange {
         box-shadow: -3px 3px $ninethColor;
         border: 3px solid $ninethColor;
+    }
+
+    &_active {
+        transform: translate(-3px, 3px);
+        box-shadow: 0 0 $thirdColor;
     }
 }
