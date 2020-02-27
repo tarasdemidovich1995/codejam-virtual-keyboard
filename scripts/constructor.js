@@ -1,4 +1,4 @@
-class Constructor {
+export default class Constructor {
 
     layoutEngLowerCase = [
         ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace'],
@@ -83,7 +83,7 @@ class Constructor {
     };
 
 
-    constructor(language = 'ru-RU', element) {
+    constructor(language = 'ru-RU') {
         if (language == 'ru-RU') {
             this.language = 'ru-RU';
             this.layout = this.layoutRuLowerCase;
@@ -92,41 +92,6 @@ class Constructor {
             this.layout = this.layoutEngLowerCase;
         }
         this.keyboard = this.createKeyboard();
-        element.appendChild(this.keyboard);
-    }
-
-    createKeyboard() {
-        const container = this.createElement('div', ['container']);
-        const keyboard = this.createElement('section', ['keyboard'], { id: 'keyboard' });
-        const keyboardField = this.createElement('div', ['keyboard__field']);
-        const textarea = this.createElement('textarea', ['keyboard__textarea'], { id: 'textarea' });
-        const keyboardButtons = this.createElement('div', ['keyboard__buttons']);
-        const keyboardButtonsLeft = this.createLayout('div', ['keyboard__buttons-left'], this.layout, this.layoutKeyCode);
-        const keyboardButtonsRight = this.createLayout('div', ['keyboard__buttons-right'], this.deleteNArrowsLayout, this.deleteNArrowsLayoutKeyCode);
-
-        keyboardField.appendChild(textarea);
-
-        keyboardButtons.appendChild(keyboardButtonsLeft);
-        keyboardButtons.appendChild(keyboardButtonsRight);
-
-        keyboard.appendChild(keyboardField);
-        keyboard.appendChild(keyboardButtons);
-
-        container.appendChild(keyboard);
-
-        return container;
-    }
-
-    isSpecial(button) {
-        return this.specialButtons.includes(button);
-    }
-
-    getColor(button) {
-        const colors = this.language === 'ru-RU' | 'ru' ? this.colorsRu : this.colorsEng;
-        for (let key in colors) {
-            if (colors[key].includes(button)) return key;
-        }
-        return 'default';
     }
 
     createElement(tagName, classList, attributes, content) {
@@ -173,5 +138,49 @@ class Constructor {
             buttonClasses.push(`button_${color}`);
         }
         return this.createElement('button', buttonClasses, { id: `${keyCode}` }, content);
+    }
+
+    createKeyboard() {
+        const container = this.createElement('div', ['container']);
+        const keyboard = this.createElement('section', ['keyboard'], { id: 'keyboard' });
+        const keyboardField = this.createElement('div', ['keyboard__field']);
+        const textarea = this.createElement('textarea', ['keyboard__textarea'], { id: 'textarea' });
+        const keyboardButtons = this.createElement('div', ['keyboard__buttons']);
+        const keyboardButtonsLeft = this.createLayout('div', ['keyboard__buttons-left'], this.layout, this.layoutKeyCode);
+        const keyboardButtonsRight = this.createLayout('div', ['keyboard__buttons-right'], this.deleteNArrowsLayout, this.deleteNArrowsLayoutKeyCode);
+
+        keyboardField.appendChild(textarea);
+
+        keyboardButtons.appendChild(keyboardButtonsLeft);
+        keyboardButtons.appendChild(keyboardButtonsRight);
+
+        keyboard.appendChild(keyboardField);
+        keyboard.appendChild(keyboardButtons);
+
+        container.appendChild(keyboard);
+
+        return container;
+    }
+
+    isSpecial(button) {
+        return this.specialButtons.includes(button);
+    }
+
+    getColor(button) {
+        const colors = this.language === 'ru-RU' | 'ru' ? this.colorsRu : this.colorsEng;
+        for (let key in colors) {
+            if (colors[key].includes(button)) return key;
+        }
+        return 'default';
+    }
+
+    addKeyboardInElement(elem) {
+        elem.appendChild(this.keyboard);
+    }
+
+    getLayout(language, isLowerCase = true) {
+        const curLanguage = language === 'ru-RU' ? 'Ru' : 'Eng';
+        const curCase = isLowerCase ? 'LowerCase' : 'UpperCase';
+        return this[`layout${curLanguage}${curCase}`];
     }
 }
