@@ -93,7 +93,7 @@ body {
   border-radius: 10px;
   padding: 10px;
   font-family: 'RobotoMono', monospace;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 400;
   color: #5B6497;
 }
@@ -190,7 +190,7 @@ body {
 .button_default {
   font-family: 'RobotoMono', monospace;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: #5B6497;
 }
 
@@ -253,10 +253,22 @@ body {
   border: 3px solid #78E2AA;
 }
 
+.button_green.button_active {
+  background-color: #78E2AA;
+  -webkit-box-shadow: 0 0 #78E2AA;
+          box-shadow: 0 0 #78E2AA;
+}
+
 .button_blue {
   -webkit-box-shadow: -3px 3px #63E3FF;
           box-shadow: -3px 3px #63E3FF;
   border: 3px solid #63E3FF;
+}
+
+.button_blue.button_active {
+  background-color: #63E3FF;
+  -webkit-box-shadow: 0 0 #63E3FF;
+          box-shadow: 0 0 #63E3FF;
 }
 
 .button_purple {
@@ -265,10 +277,22 @@ body {
   border: 3px solid #F69EC4;
 }
 
+.button_purple.button_active {
+  background-color: #F69EC4;
+  -webkit-box-shadow: 0 0 #F69EC4;
+          box-shadow: 0 0 #F69EC4;
+}
+
 .button_orange {
   -webkit-box-shadow: -3px 3px #FFC07E;
           box-shadow: -3px 3px #FFC07E;
   border: 3px solid #FFC07E;
+}
+
+.button_orange.button_active {
+  background-color: #FFC07E;
+  -webkit-box-shadow: 0 0 #FFC07E;
+          box-shadow: 0 0 #FFC07E;
 }
 
 .button_yellow {
@@ -277,15 +301,16 @@ body {
   border: 3px solid #FFEF7E;
 }
 
-.button_light-orange {
-  -webkit-box-shadow: -3px 3px #FFD87E;
-          box-shadow: -3px 3px #FFD87E;
-  border: 3px solid #FFD87E;
+.button_yellow.button_active {
+  background-color: #FFEF7E;
+  -webkit-box-shadow: 0 0 #FFEF7E;
+          box-shadow: 0 0 #FFEF7E;
 }
 
 .button_active {
   -webkit-transform: translate(-3px, 3px);
           transform: translate(-3px, 3px);
+  background-color: #9AD3FA;
   -webkit-box-shadow: 0 0 #9AD3FA;
           box-shadow: 0 0 #9AD3FA;
 }
