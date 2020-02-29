@@ -1,1 +1,1 @@
-start Virtual Keyboard task
+https://tarasdemidovich1995.github.io/codejam-virtual-keyboard/
