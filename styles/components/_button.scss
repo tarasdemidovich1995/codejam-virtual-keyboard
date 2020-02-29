@@ -26,15 +26,15 @@
     }   
 
     &_default {
-        font-family: 'Roboto-Regular' monospace;
+        font-family: 'RobotoMono', monospace;
         font-weight: 400;
-        font-size: 0.8rem;
+        font-size: 1rem;
         color: $textColor2;
     }
 
     &_special {
 
-        font-family: 'Roboto-Bold', monospace;
+        font-family: 'RobotoMono', monospace;
         font-weight: 700;
         font-size: 0.5rem;
         color: $textColor2;

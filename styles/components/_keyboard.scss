@@ -12,8 +12,9 @@
         border-radius: 10px;
         padding: 10px;
 
-        font-family: 'Roboto-Regular', monospace;
-        font-size: 1.2rem;
+        font-family: 'RobotoMono', monospace;
+        font-size: 1rem;
+        font-weight: 400;
         color: $textColor2;
 
         &:focus {

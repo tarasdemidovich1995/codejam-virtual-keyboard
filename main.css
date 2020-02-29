@@ -1,14 +1,7 @@
 @font-face {
-  font-family: 'Roboto-Regular';
-  src: url("./fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+  font-family: 'RobotoMono';
+  src: url("./fonts/RobotoMono/RobotoMono-Regular.eot?iefix") format("eot"), url("./fonts/RobotoMono/RobotoMono-Regular.ttf") format("truetype"), url("./fonts/RobotoMono/RobotoMono-Regular.woff") format("woff");
   font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Roboto-Bold';
-  src: url("./fonts/Roboto/Roboto-Bold.ttf") format("truetype");
-  font-weight: 700;
   font-style: normal;
 }
 
@@ -72,7 +65,7 @@ table {
 }
 
 html {
-  font-family: 'Roboto-Bold';
+  font-family: 'OpenGost type A TT', monospace;
   font-size: 20px;
 }
 
@@ -99,8 +92,9 @@ body {
   resize: none;
   border-radius: 10px;
   padding: 10px;
-  font-family: 'Roboto-Regular', monospace;
-  font-size: 1.2rem;
+  font-family: 'RobotoMono', monospace;
+  font-size: 1rem;
+  font-weight: 400;
   color: #5B6497;
 }
 
@@ -194,14 +188,14 @@ body {
 }
 
 .button_default {
-  font-family: 'Roboto-Regular' monospace;
+  font-family: 'RobotoMono', monospace;
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: #5B6497;
 }
 
 .button_special {
-  font-family: 'Roboto-Bold', monospace;
+  font-family: 'RobotoMono', monospace;
   font-weight: 700;
   font-size: 0.5rem;
   color: #5B6497;
