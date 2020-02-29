@@ -11,17 +11,16 @@ export default class Controller {
         this._ctrl = false;
         this._arrowBase = null;
 
-        this.keyboardButtons.onmouseup = this.onMouseUp.bind(this);
-        this.keyboardButtons.onmousedown = this.onMouseDown.bind(this);
-        this.keyboardButtons.onmouseout = this.onMouseOut.bind(this);
-        this.keyboardButtons.onkeydown = this.onKeyDown.bind(this);
+        document.addEventListener('mousedown', this.onMouseDown.bind(this));
+        document.addEventListener('mouseup', this.onMouseUp.bind(this));
+        document.addEventListener('mouseout', this.onMouseOut.bind(this));
 
         document.addEventListener('keydown', this.onKeyDown.bind(this));
         document.addEventListener('keyup', this.onKeyUp.bind(this));
     }
 
     space() {
-        this.addSymbolToTextArea('\s');
+        this.addSymbolToTextArea(' ');
     }
 
     enter() {
@@ -29,7 +28,7 @@ export default class Controller {
     }
 
     tab() {
-        this.addSymbolToTextArea('\t');
+        // this.addSymbolToTextArea('\t');
     }
 
     win() {
@@ -46,13 +45,93 @@ export default class Controller {
         }
     }
 
-    ArrowUp() {
+    calculateSelectionPosition(direction) {
+        const rowLength = 57;
+        const start = this.textarea.selectionStart;
+        const end = this.textarea.selectionEnd;
+        const length = this.textarea.value.length;
+        const enters = Array.from(this.textarea.value.matchAll(/\n/g)).map(elem => elem = elem.index);
+        let base;
+        if (direction == 'top') {
+            const topEnters = enters.filter(elem => elem < start);
+            if (topEnters.length == 1) {
+                const firstEnter = topEnters[topEnters.length - 1];
+                const curRowLength = (start - firstEnter) % rowLength;
+                const prevRowLength = firstEnter % rowLength;
+                if (curRowLength >= prevRowLength) {
+                    base = firstEnter;
+                } else {
+                    base = (firstEnter - 1) - prevRowLength + curRowLength;
+                }
+            } else if (topEnters.length > 1) {
+                const firstEnter = topEnters[topEnters.length - 1];
+                const secondEnter = topEnters[topEnters.length - 2];
+                const curRowLength = (start - firstEnter) % rowLength;
+                const prevRowLength = (firstEnter - secondEnter) % rowLength;
+                if (curRowLength >= prevRowLength) {
+                    base = firstEnter;
+                } else {
+                    base = firstEnter - prevRowLength + curRowLength;
+                }
+            } else {
+                if (start > rowLength) {
+                    base = start - rowLength;
+                }
+            }
+        }
 
+        if (direction == 'bottom') {
+            const bottomEnters = enters.filter(elem => elem > start);
+            const topEnter = enters.filter(elem => elem < start)[topEnters.length - 1];
+            if (bottomEnters.length == 1) {
+                const firstEnter = bottomEnters[0];
+                const curRowLength = (start - firstEnter) % rowLength;
+                const prevRowLength = firstEnter % rowLength;
+                if (curRowLength >= prevRowLength) {
+                    base = firstEnter;
+                } else {
+                    base = (firstEnter - 1) - prevRowLength + curRowLength;
+                }
+            } else if (bottomEnters.length > 1) {
+                const firstEnter = bottomEnters[bottomEnters.length - 1];
+                const secondEnter = bottomEnters[bottomEnters.length - 2];
+                const curRowLength = (start - firstEnter) % rowLength;
+                const prevRowLength = (firstEnter - secondEnter) % rowLength;
+                if (curRowLength >= prevRowLength) {
+                    base = firstEnter;
+                } else {
+                    base = firstEnter - prevRowLength + curRowLength;
+                }
+            } else {
+                if (start > rowLength) {
+                    base = start - rowLength;
+                }
+            }
+        }
+        return base;
+    }
+
+    ArrowUp() {
+        const rowLength = 57;
+        const start = this.textarea.selectionStart;
+        const end = this.textarea.selectionEnd;
+        const base = this.calculateSelectionPosition('top');
+        this.textarea.setSelectionRange(base, base);
     }
 
     ArrowDown() {
+        const rowLength = 57;
+        const length = this.textarea.value.length;
+        const start = this.textarea.selectionStart;
+        const end = this.textarea.selectionEnd;
 
+        if (true) {
+
+        } else {
+            this.textarea.setSelectionRange(enterPos, enterPos);
+        }
     }
+
 
     ArrowLeft() {
         const start = this.textarea.selectionStart;
@@ -75,6 +154,7 @@ export default class Controller {
                     this.textarea.setSelectionRange(start - 1, end - 1);
                 }
             }
+            // доделать при start == 0
         }
     }
 
@@ -100,6 +180,7 @@ export default class Controller {
                     this.textarea.setSelectionRange(start + 1, end + 1);
                 }
             }
+            // доделать при end == length
         }
     }
 
