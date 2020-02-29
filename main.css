@@ -169,14 +169,14 @@ body {
           box-shadow: -3px 3px #9AD3FA;
   border: 3px solid #9AD3FA;
   cursor: pointer;
-  -webkit-transition-duration: 0.05s, 0.05s;
-          transition-duration: 0.05s, 0.05s;
-  -webkit-transition-property: -webkit-transform, -webkit-box-shadow;
-  transition-property: -webkit-transform, -webkit-box-shadow;
-  transition-property: transform, box-shadow;
-  transition-property: transform, box-shadow, -webkit-transform, -webkit-box-shadow;
-  -webkit-transition-duration: linear, linear;
-          transition-duration: linear, linear;
+  -webkit-transition-duration: 0.05s, 0.05s, 0.2s;
+          transition-duration: 0.05s, 0.05s, 0.2s;
+  -webkit-transition-property: background-color, -webkit-transform, -webkit-box-shadow;
+  transition-property: background-color, -webkit-transform, -webkit-box-shadow;
+  transition-property: transform, box-shadow, background-color;
+  transition-property: transform, box-shadow, background-color, -webkit-transform, -webkit-box-shadow;
+  -webkit-transition-duration: linear, linear, linear;
+          transition-duration: linear, linear, linear;
 }
 
 .button:last-child {

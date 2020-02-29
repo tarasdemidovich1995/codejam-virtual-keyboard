@@ -13,9 +13,9 @@
     border: 3px solid $thirdColor;
     cursor: pointer;
 
-    transition-duration: 0.05s, 0.05s;
-    transition-property: transform, box-shadow;
-    transition-duration: linear, linear;
+    transition-duration: 0.05s, 0.05s, 0.2s;
+    transition-property: transform, box-shadow, background-color;
+    transition-duration: linear, linear, linear;
 
     &:last-child {
         margin-right: 0;

@@ -161,6 +161,7 @@ export default class Constructor {
 
         this.textarea = textarea;
         this.keyboardButtons = keyboardButtons;
+        this.keyboardButtonsLeft = keyboardButtonsLeft
 
         return container;
     }
@@ -181,21 +182,26 @@ export default class Constructor {
         elem.appendChild(this.keyboard);
     }
 
-    getLayout(language, isLowerCase = true) {
+    getLayout(language, isUpperCase) {
         const curLanguage = language === 'ru-RU' ? 'Ru' : 'Eng';
-        const curCase = isLowerCase ? 'LowerCase' : 'UpperCase';
-        return this[`layout${curLanguage}${curCase}`];
+        const curCase = isUpperCase ? 'UpperCase' : 'LowerCase';
+        const layoutList = this[`layout${curLanguage}${curCase}`];
+        let layout = [];
+        for (let row of layoutList) {
+            layout = layout.concat(row);
+        }
+        return layout;
     }
 
     getTextarea() {
         return this.textarea;
     }
 
-    getKeyboardButtons() {
+    getKeyboardButtonsField() {
         return this.keyboardButtons;
     }
 
     getButtons() {
-        return this.keyboardButtons.querySelectorAll('.button');
+        return this.keyboardButtonsLeft.querySelectorAll('.button');
     }
 }
