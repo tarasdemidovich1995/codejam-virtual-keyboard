@@ -4,13 +4,11 @@ export default class Controller {
         this.textarea = keyboard.getTextarea();
         this.keyboardButtons = keyboard.getKeyboardButtons();
         this.layoutLanguage = this.keyboard.language;
-        this.bu
 
         this._shift = false;
         this._alt = false;
         this._capslook = false;
         this._ctrl = false;
-        this._arrowBase = null;
 
         document.addEventListener('mousedown', this.onMouseDown.bind(this));
         document.addEventListener('mouseup', this.onMouseUp.bind(this));
@@ -113,15 +111,13 @@ export default class Controller {
 
     ArrowUp() {
         const base = this.calculateSelectionPosition('top');
-        if (base) this.textarea.setSelectionRange(base, base);
+        if (base !== undefined) this.textarea.setSelectionRange(base, base);
     }
 
     ArrowDown() {
         const base = this.calculateSelectionPosition('bottom');
-        if (base) this.textarea.setSelectionRange(base, base);
+        if (base !== undefined) this.textarea.setSelectionRange(base, base);
     }
-
-
 
     ArrowLeft() {
         const start = this.textarea.selectionStart;
