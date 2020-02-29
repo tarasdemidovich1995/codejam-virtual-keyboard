@@ -4,6 +4,7 @@ export default class Controller {
         this.textarea = keyboard.getTextarea();
         this.keyboardButtons = keyboard.getKeyboardButtons();
         this.layoutLanguage = this.keyboard.language;
+        this.bu
 
         this._shift = false;
         this._alt = false;
@@ -46,7 +47,7 @@ export default class Controller {
     }
 
     calculateSelectionPosition(direction) {
-        const rowLength = 57;
+        const rowLength = 69;
         const start = this.textarea.selectionStart;
         const end = this.textarea.selectionEnd;
         const length = this.textarea.value.length;
@@ -56,18 +57,18 @@ export default class Controller {
             const topEnters = enters.filter(elem => elem < start);
             if (topEnters.length == 1) {
                 const firstEnter = topEnters[topEnters.length - 1];
-                const curRowLength = (start - firstEnter) % rowLength;
+                const curRowLength = (start - firstEnter - 1) % rowLength;
                 const prevRowLength = firstEnter % rowLength;
                 if (curRowLength >= prevRowLength) {
                     base = firstEnter;
                 } else {
-                    base = (firstEnter - 1) - prevRowLength + curRowLength;
+                    base = firstEnter - prevRowLength + curRowLength;
                 }
             } else if (topEnters.length > 1) {
                 const firstEnter = topEnters[topEnters.length - 1];
                 const secondEnter = topEnters[topEnters.length - 2];
-                const curRowLength = (start - firstEnter) % rowLength;
-                const prevRowLength = (firstEnter - secondEnter) % rowLength;
+                const curRowLength = (start - firstEnter - 1) % rowLength;
+                const prevRowLength = (firstEnter - secondEnter - 1) % rowLength;
                 if (curRowLength >= prevRowLength) {
                     base = firstEnter;
                 } else {
@@ -79,32 +80,31 @@ export default class Controller {
                 }
             }
         }
-
         if (direction == 'bottom') {
-            const bottomEnters = enters.filter(elem => elem > start);
-            const topEnter = enters.filter(elem => elem < start)[topEnters.length - 1];
+            const bottomEnters = enters.filter(elem => elem >= end);
+            const topEnters = enters.filter(elem => elem < end);
             if (bottomEnters.length == 1) {
                 const firstEnter = bottomEnters[0];
-                const curRowLength = (start - firstEnter) % rowLength;
-                const prevRowLength = firstEnter % rowLength;
-                if (curRowLength >= prevRowLength) {
-                    base = firstEnter;
+                const curRowLength = topEnters.length != 0 ? (end - topEnters[topEnters.length - 1] - 1) % rowLength : end % rowLength;
+                const nextRowLength = (length - firstEnter) % rowLength;
+                if (curRowLength >= nextRowLength) {
+                    base = (firstEnter + 1) + nextRowLength;
                 } else {
-                    base = (firstEnter - 1) - prevRowLength + curRowLength;
+                    base = (firstEnter + 1) + curRowLength;
                 }
             } else if (bottomEnters.length > 1) {
-                const firstEnter = bottomEnters[bottomEnters.length - 1];
-                const secondEnter = bottomEnters[bottomEnters.length - 2];
-                const curRowLength = (start - firstEnter) % rowLength;
-                const prevRowLength = (firstEnter - secondEnter) % rowLength;
-                if (curRowLength >= prevRowLength) {
-                    base = firstEnter;
+                const firstEnter = bottomEnters[0];
+                const secondEnter = bottomEnters[1];
+                const curRowLength = topEnters.length != 0 ? (end - topEnters[topEnters.length - 1] - 1) % rowLength : end % rowLength;
+                const nextRowLength = (secondEnter - firstEnter - 1) % rowLength;
+                if (curRowLength >= nextRowLength) {
+                    base = firstEnter + nextRowLength + 1;
                 } else {
-                    base = firstEnter - prevRowLength + curRowLength;
+                    base = firstEnter + curRowLength + 1;
                 }
             } else {
-                if (start > rowLength) {
-                    base = start - rowLength;
+                if ((end + rowLength) < length) {
+                    base = end + rowLength;
                 }
             }
         }
@@ -112,49 +112,22 @@ export default class Controller {
     }
 
     ArrowUp() {
-        const rowLength = 57;
-        const start = this.textarea.selectionStart;
-        const end = this.textarea.selectionEnd;
         const base = this.calculateSelectionPosition('top');
-        this.textarea.setSelectionRange(base, base);
+        if (base) this.textarea.setSelectionRange(base, base);
     }
 
     ArrowDown() {
-        const rowLength = 57;
-        const length = this.textarea.value.length;
-        const start = this.textarea.selectionStart;
-        const end = this.textarea.selectionEnd;
-
-        if (true) {
-
-        } else {
-            this.textarea.setSelectionRange(enterPos, enterPos);
-        }
+        const base = this.calculateSelectionPosition('bottom');
+        if (base) this.textarea.setSelectionRange(base, base);
     }
+
 
 
     ArrowLeft() {
         const start = this.textarea.selectionStart;
         const end = this.textarea.selectionEnd;
         if (start != 0) {
-            if (this._shift && !this._arrowBase) {
-                this._arrowBase = start;
-            }
-            if (this._shift) {
-                if (end > this._arrowBase) {
-                    this.textarea.setSelectionRange(this._arrowBase, end - 1);
-                } else {
-                    this.textarea.setSelectionRange(start - 1, this._arrowBase);
-                }
-            } else {
-                if (start != end) {
-                    this.textarea.setSelectionRange(start, start);
-                    this._arrowBase = null;
-                } else {
-                    this.textarea.setSelectionRange(start - 1, end - 1);
-                }
-            }
-            // доделать при start == 0
+            this.textarea.setSelectionRange(start - 1, end - 1);
         }
     }
 
@@ -163,24 +136,7 @@ export default class Controller {
         const end = this.textarea.selectionEnd;
         const length = this.textarea.value.length;
         if (end != length) {
-            if (this._shift && !this._arrowBase) {
-                this._arrowBase = start;
-            }
-            if (this._shift) {
-                if (start < this._arrowBase) {
-                    this.textarea.setSelectionRange(start + 1, this._arrowBase);
-                } else {
-                    this.textarea.setSelectionRange(this._arrowBase, end + 1);
-                }
-            } else {
-                if (start != end) {
-                    this.textarea.setSelectionRange(end, end);
-                    this._arrowBase = null;
-                } else {
-                    this.textarea.setSelectionRange(start + 1, end + 1);
-                }
-            }
-            // доделать при end == length
+            this.textarea.setSelectionRange(start + 1, end + 1);
         }
     }
 
