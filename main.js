@@ -1,7 +1,8 @@
 import Keyboard from './scripts/keyboard.js';
-import Controller from './scripts/controller.js'
+import Controller from './scripts/controller.js';
 
-const keyboard = new Keyboard(navigator.language);
+const language = localStorage.getItem('keyboardTaskLang') ? localStorage.getItem('keyboardTaskLang') : navigator.language;
+const keyboard = new Keyboard(language);
 const controller = new Controller(keyboard);
 
 window.keyboard = keyboard;

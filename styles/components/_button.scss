@@ -1,5 +1,5 @@
 .button {
-
+    font-family: 'PT Sans', sans-serif;
     background-color: white;
 
     width: 50px;
@@ -15,7 +15,12 @@
 
     transition-duration: 0.05s, 0.05s, 0.2s;
     transition-property: transform, box-shadow, background-color;
-    transition-duration: linear, linear, linear;
+
+    &_active {
+        transform: translate(-3px, 3px);
+        background-color: $thirdColor;
+        box-shadow: 0 0 $thirdColor;
+    }
 
     &:last-child {
         margin-right: 0;
@@ -23,18 +28,15 @@
 
     &:focus {
         outline-width: 0;
-    }   
-
+    }
+    
     &_default {
-        font-family: 'RobotoMono', monospace;
         font-weight: 400;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         color: $textColor2;
     }
 
     &_special {
-
-        font-family: 'RobotoMono', monospace;
         font-weight: 700;
         font-size: 0.5rem;
         color: $textColor2;
@@ -49,18 +51,6 @@
 
         &_capslock {
             width: 88.5px;
-            position: relative;
-            &::before {
-                content: '';
-                display: block;
-                width: 5px;
-                height: 5px;
-                border-radius: 50%;
-                background-color: red;
-                position: absolute;
-                top: 5px;
-                right: 5px;
-            }
         }
 
         &_enter {
@@ -123,10 +113,5 @@
             background-color: $eighthColor;
             box-shadow: 0 0 $eighthColor;
         }
-    }
-    &_active {
-        transform: translate(-3px, 3px);
-        background-color: $thirdColor;
-        box-shadow: 0 0 $thirdColor;
     }
 }
