@@ -1,0 +1,117 @@
+.button {
+    font-family: 'PT Sans', sans-serif;
+    background-color: white;
+
+    width: 50px;
+    height: 50px;
+    margin-right: 6px;
+    border-radius: 6px;
+    border-width: 0px;
+    flex-shrink: 0;
+    
+    box-shadow: -3px 3px $thirdColor;
+    border: 3px solid $thirdColor;
+    cursor: pointer;
+
+    transition-duration: 0.05s, 0.05s, 0.2s;
+    transition-property: transform, box-shadow, background-color;
+
+    &_active {
+        transform: translate(-3px, 3px);
+        background-color: $thirdColor;
+        box-shadow: 0 0 $thirdColor;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &:focus {
+        outline-width: 0;
+    }
+    
+    &_default {
+        font-weight: 400;
+        font-size: 0.9rem;
+        color: $textColor2;
+    }
+
+    &_special {
+        font-weight: 700;
+        font-size: 0.5rem;
+        color: $textColor2;
+        text-transform: uppercase;
+
+        &_backspace {
+            width: 71px;
+        }
+        &_tab {
+            width: 71px;
+        }
+
+        &_capslock {
+            width: 88.5px;
+        }
+
+        &_enter {
+            width: 88.5px;
+        }
+
+        &_shift {
+            width: 116.5px;
+        }
+
+        &_ctrl {
+            width: 116.5px;
+        }
+
+        &_space {
+            width: 330px;
+        }
+
+        &_arrow {
+            font-size: 1rem;
+        }
+    }
+
+    &_green {
+        box-shadow: -3px 3px $fourthColor;
+        border: 3px solid $fourthColor;
+        &.button_active {
+            background-color: $fourthColor;
+            box-shadow: 0 0 $fourthColor;
+        }
+    }
+    &_blue {
+        box-shadow: -3px 3px $fifthColor;
+        border: 3px solid $fifthColor;
+        &.button_active {
+            background-color: $fifthColor;
+            box-shadow: 0 0 $fifthColor;
+        }
+    }
+    &_purple {
+        box-shadow: -3px 3px $sixthColor;
+        border: 3px solid $sixthColor;
+        &.button_active {
+            background-color: $sixthColor;
+            box-shadow: 0 0 $sixthColor;
+        }
+    }
+    &_orange {
+        box-shadow: -3px 3px $seventhColor;
+        border: 3px solid $seventhColor;
+        &.button_active {
+            background-color: $seventhColor;
+            box-shadow: 0 0 $seventhColor;
+        }
+    }
+    &_yellow {
+        box-shadow: -3px 3px $eighthColor;
+        border: 3px solid $eighthColor;
+        &.button_active {
+            background-color: $eighthColor;
+            box-shadow: 0 0 $eighthColor;
+        }
+    }
+}
